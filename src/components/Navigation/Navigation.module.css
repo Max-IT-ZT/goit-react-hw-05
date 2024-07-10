@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  background-color: darkslategray;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.link {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.isActive {
+  color: orangered;
+}
