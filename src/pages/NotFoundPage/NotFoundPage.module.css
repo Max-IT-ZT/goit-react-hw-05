@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: white;
+}
+.icon {
+  width: 150px;
+  height: 150px;
+  color: rgba(250, 115, 115, 0.74);
+}
+.link {
+  color: rgb(205, 151, 255);
+  text-decoration: underline;
+}

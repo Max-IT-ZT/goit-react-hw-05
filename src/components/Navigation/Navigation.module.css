@@ -1,6 +1,7 @@
-.container {
+.nav {
   width: 100%;
-  background-color: darkslategray;
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 20px;
