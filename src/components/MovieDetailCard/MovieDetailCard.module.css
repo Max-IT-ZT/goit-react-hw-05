@@ -52,3 +52,16 @@
   background-size: cover;
   background-position: center;
 }
+@media (min-width: 769px) {
+  .img {
+    width: 400px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .img {
+    width: 300px;
+    height: auto;
+  }
+}

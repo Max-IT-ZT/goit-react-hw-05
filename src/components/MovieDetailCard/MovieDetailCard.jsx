@@ -35,7 +35,7 @@ export default function MovieDetailCard({ movie }) {
           <h4 className={css.date}>Release Date:{movie.release_date}</h4>
           <p className={css.popularity}>
             Popularity: {movie.popularity.toFixed(0)}
-            <AiFillLike />{" "}
+            <AiFillLike />
           </p>
           <h3 className={css.overview}>Overview</h3>
           <p className={css.overviewText}>{movie.overview}</p>
