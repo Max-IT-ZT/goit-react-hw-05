@@ -32,20 +32,24 @@ export default function MovieCast() {
     <div className={css.container}>
       {error && <p>{error}</p>}
       {loading && <Loader />}
-      <h2 className={css.title}>Movie Cast</h2>
-      <ul className={css.list}>
-        {cast.map((actor) => {
-          const posterUrl = actor.profile_path
-            ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
-            : defaultImg;
-          return (
-            <li key={actor.id}>
-              <img src={posterUrl} alt={actor.name} />
-              <p>{actor.name}</p>
-            </li>
-          );
-        })}
-      </ul>
+      {!loading && (
+        <>
+          <h2 className={css.title}>Movie Cast</h2>
+          <ul className={css.list}>
+            {cast.map((actor) => {
+              const posterUrl = actor.profile_path
+                ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+                : defaultImg;
+              return (
+                <li key={actor.id}>
+                  <img src={posterUrl} alt={actor.name} />
+                  <p>{actor.name}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
     </div>
   );
 }

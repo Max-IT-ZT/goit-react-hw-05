@@ -5,6 +5,7 @@ import Loader from "../../components/Loader/Loader";
 import css from "./HomePage.module.css";
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  console.log("movies: ", movies);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -22,20 +23,23 @@ export default function HomePage() {
     }
     fetchTrendingMovies();
   }, []);
-  const currentBackdropPath = movies[0]?.backdrop_path;
-  const backgroundImageUrl = currentBackdropPath
-    ? `https://image.tmdb.org/t/p/original${currentBackdropPath}`
-    : "";
   return (
     <div className={css.container}>
-      <div
-        className={`${css.background} ${css.show}`}
-        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
-      ></div>
-      <h1 className={css.title}>Trending today</h1>
-      {error && <p>Error: {error.message}</p>}
       {loading && <Loader />}
-      <MovieList movies={movies} />
+      {!loading && (
+        <>
+          <div
+            className={`${css.background} ${css.show}`}
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/original${movies[0]?.backdrop_path})`,
+            }}
+          ></div>
+          <h1 className={css.title}>Trending today</h1>
+          {error && <p>Error: {error.message}</p>}
+
+          <MovieList movies={movies} />
+        </>
+      )}
     </div>
   );
 }

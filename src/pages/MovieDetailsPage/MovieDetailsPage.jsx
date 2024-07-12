@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { getMovieDetails } from "../../api";
 import Loader from "../../components/Loader/Loader";
@@ -13,6 +13,8 @@ export default function MovieDetailsPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!movieId) return;
+
     async function fetchMovieDetails() {
       try {
         setLoading(true);
@@ -35,20 +37,26 @@ export default function MovieDetailsPage() {
     <div className={css.container}>
       {error && <p>Error: {error.message}</p>}
       {loading && <Loader />}
-      {movie && <MovieDetailCard movie={movie} />}
-      <ul className={css.list}>
-        <li>
-          <NavLink to="cast" className={activeClass}>
-            Cast
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews" className={activeClass}>
-            Reviews
-          </NavLink>
-        </li>
-      </ul>
-      <Outlet />
+      {!loading && movie && (
+        <>
+          <MovieDetailCard movie={movie} />
+          <ul className={css.list}>
+            <li>
+              <NavLink to="cast" className={activeClass}>
+                Cast
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="reviews" className={activeClass}>
+                Reviews
+              </NavLink>
+            </li>
+          </ul>
+        </>
+      )}
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }
