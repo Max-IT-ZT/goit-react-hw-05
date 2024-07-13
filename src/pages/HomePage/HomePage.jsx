@@ -31,7 +31,7 @@ export default function HomePage() {
           <div
             className={`${css.background} ${css.show}`}
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${movies[0]?.backdrop_path})`,
+              backgroundImage: `url(https://image.tmdb.org/t/p/original${movies[1]?.backdrop_path})`,
             }}
           ></div>
           <h1 className={css.title}>Trending today</h1>

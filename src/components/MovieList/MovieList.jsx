@@ -8,7 +8,7 @@ export default function MovieList({ movies }) {
     <ul className={css.movieList}>
       {movies.map((movie) => {
         const posterUrl = movie.poster_path
-          ? `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
+          ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
           : defaultImg;
         return (
           <li key={movie.id} className={css.movieItem}>
