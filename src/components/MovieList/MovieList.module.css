@@ -20,9 +20,12 @@
 
 .movieItem {
   text-align: center;
-  border: 1px solid #a17676;
+  border: 1px solid #a0a0a0;
   padding: 10px;
   border-radius: 10px;
+  background-color: #c5c5c5;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 @media (min-width: 769px) {
@@ -43,5 +46,5 @@
   font-size: 18px;
   margin-top: 10px;
   font-weight: 600;
-  color: #c5c5c5;
+  color: #4c4c4c;
 }
