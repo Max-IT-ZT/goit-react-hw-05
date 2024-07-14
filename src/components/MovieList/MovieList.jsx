@@ -15,7 +15,7 @@ export default function MovieList({ movies }) {
             <Link to={`/movies/${movie.id}`} state={location}>
               <img src={posterUrl} alt={movie.title} className={css.movieImg} />
               <p className={css.movieText}>{movie.title}</p>
-              <p className={css.movieText}>Date: {movie.release_date}</p>
+              <p className={css.movieText}>Дата релізу: {movie.release_date}</p>
             </Link>
           </li>
         );

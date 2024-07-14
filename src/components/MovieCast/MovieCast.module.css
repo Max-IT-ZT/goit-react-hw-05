@@ -4,11 +4,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .title {
   color: white;
   text-shadow: rgba(245, 245, 223, 0.853);
   margin-top: 10px;
 }
+
 .list {
   margin-top: 20px;
   display: flex;
@@ -18,4 +20,35 @@
   gap: 20px;
   text-align: center;
   color: white;
+}
+
+.item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 10px;
+  height: 200px;
+  width: 120px; /* Ширина елемента */
+  transition: transform 0.3s; /* Анімація при наведенні */
+}
+
+.item:hover {
+  transform: scale(1.05); /* Збільшення при наведенні */
+}
+
+.img {
+  border-radius: 10px; /* Округлені краї зображення */
+  width: 100%; /* Адаптивна ширина зображення */
+  height: auto; /* Автоматична висота для збереження пропорцій */
+}
+
+.text {
+  font-size: 13px;
+  margin-top: 5px; /* Відстань між зображенням і ім'ям актора */
+}
+
+/* Стилі для смартфонів */
+@media (max-width: 600px) {
+  .list {
+    gap: 15px; /* Менша відстань між елементами */
+  }
 }

@@ -10,7 +10,7 @@ const options = {
 
 export const getMovies = async (query) => {
   const response = await axios.get(
-    `/search/movie?include_adult=false&language=en-US&page=1&query=${query}`,
+    `/search/movie?include_adult=false&language=uk-UA&page=1&query=${query}`,
     options
   );
   return response.data;
@@ -18,20 +18,20 @@ export const getMovies = async (query) => {
 
 export const getTrendingMovies = async () => {
   const response = await axios.get(
-    `/trending/movie/day?language=en-US`,
+    `/trending/movie/day?language=uk-UA`,
     options
   );
   return response.data;
 };
 
 export const getMovieDetails = async (movieId) => {
-  const response = await axios.get(`/movie/${movieId}?language=en-US`, options);
+  const response = await axios.get(`/movie/${movieId}?language=uk-UA`, options);
   return response.data;
 };
 
 export const getMovieCast = async (movieId) => {
   const response = await axios.get(
-    `/movie/${movieId}/credits?language=en-US`,
+    `/movie/${movieId}/credits?language=uk-UA`,
     options
   );
   return response.data.cast;
@@ -39,8 +39,24 @@ export const getMovieCast = async (movieId) => {
 
 export const getMovieReviews = async (movieId) => {
   const response = await axios.get(
-    `/movie/${movieId}/reviews?language=en-US`,
+    `/movie/${movieId}/reviews?language=uk-UA`,
     options
   );
   return response.data.results;
+};
+export const getMovieVideos = async (movieId) => {
+  let response;
+
+  response = await axios.get(
+    `/movie/${movieId}/videos?language=uk-UA`,
+    options
+  );
+  let videos = response.data.results;
+
+  if (videos.length === 0) {
+    response = await axios.get(`/movie/${movieId}/videos`, options);
+    videos = response.data.results;
+  }
+
+  return videos;
 };

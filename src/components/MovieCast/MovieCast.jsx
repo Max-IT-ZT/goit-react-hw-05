@@ -41,9 +41,9 @@ export default function MovieCast() {
                 ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
                 : defaultImg;
               return (
-                <li key={actor.id}>
-                  <img src={posterUrl} alt={actor.name} />
-                  <p>{actor.name}</p>
+                <li key={actor.id} className={css.item}>
+                  <img src={posterUrl} alt={actor.name} className={css.img} />
+                  <p className={css.text}>{actor.name}</p>
                 </li>
               );
             })}

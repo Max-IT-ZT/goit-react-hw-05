@@ -31,10 +31,11 @@ export default function HomePage() {
           <div
             className={`${css.background} ${css.show}`}
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${movies[1]?.backdrop_path})`,
+              backgroundImage: `linear-gradient(to bottom, rgba(51, 51, 51, 0) 70%, rgba(51, 51, 51, 1) 100%),
+              url(https://image.tmdb.org/t/p/original${movies[1]?.backdrop_path})`,
             }}
           ></div>
-          <h1 className={css.title}>Trending today</h1>
+          <h1 className={css.title}>Популярні фільми</h1>
           {error && <p>Error: {error.message}</p>}
 
           <MovieList movies={movies} />

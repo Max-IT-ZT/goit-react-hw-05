@@ -9,10 +9,10 @@ export default function Navigation() {
     <header>
       <nav className={css.nav}>
         <NavLink to="/" className={activeClass}>
-          Home
+          Головна
         </NavLink>
         <NavLink to="/movies" className={activeClass}>
-          Movies
+          Фільми
         </NavLink>
       </nav>
     </header>
