@@ -17,6 +17,10 @@
   opacity: 0;
 }
 
+.visible {
+  opacity: 1;
+}
+
 .background.visible {
   opacity: 1;
 }

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import css from "./BackgroundSlider.module.css";
 
+const defaultImage = "path/to/default/image.jpg";
+
 export default function BackgroundSlider({ movies }) {
   const [current, setCurrent] = useState(0);
   const [images, setImages] = useState([]);
@@ -12,9 +14,14 @@ export default function BackgroundSlider({ movies }) {
       const loadedImages = await Promise.all(
         movies.map((movie) => {
           const img = new Image();
-          img.src = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+          const imgSrc = movie.backdrop_path
+            ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+            : defaultImage;
+
+          img.src = imgSrc;
           return new Promise((resolve) => {
-            img.onload = () => resolve(img.src);
+            img.onload = () => resolve(imgSrc);
+            img.onerror = () => resolve(defaultImage);
           });
         })
       );
@@ -33,7 +40,7 @@ export default function BackgroundSlider({ movies }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 5000); // Change image every 5 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, [images]);
 
@@ -51,9 +58,8 @@ export default function BackgroundSlider({ movies }) {
           }`}
           style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%), url(${image})`,
-            animation: `${
-              index === current ? "zoomEffect 10s infinite alternate" : "none"
-            }`,
+            animation:
+              index === current ? "zoomEffect 10s infinite alternate" : "none",
           }}
         />
       ))}
