@@ -31,7 +31,7 @@ export default function MovieReviews() {
       {loading && <Loader />}
       <h2 className={css.title}>Відгуки про фільм</h2>
       {reviews.length === 0 ? (
-        <p className={css.notFound}>Поки жодног відгука</p>
+        <p className={css.notFound}>Поки жодног відгуку</p>
       ) : (
         <ul className={css.list}>
           {reviews.map((rev) => (

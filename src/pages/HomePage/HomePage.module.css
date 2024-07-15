@@ -19,15 +19,21 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .background {
+    height: 300px;
+  }
+}
+
 .show {
   opacity: 1;
 }
 
 .title {
   font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 32px;
-  color: #e0d4d4;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.836);
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 2px 2px 2px rgba(154, 130, 130, 0.563);
   letter-spacing: 1px;
   margin-top: 20px;
 }

@@ -34,11 +34,11 @@ export default function MovieCast() {
       {loading && <Loader />}
       {!loading && (
         <>
-          <h2 className={css.title}>Movie Cast</h2>
+          <h2 className={css.title}>Акторський склад</h2>
           <ul className={css.list}>
             {cast.map((actor) => {
               const posterUrl = actor.profile_path
-                ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+                ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
                 : defaultImg;
               return (
                 <li key={actor.id} className={css.item}>

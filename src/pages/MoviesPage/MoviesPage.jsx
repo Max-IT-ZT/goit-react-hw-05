@@ -31,7 +31,7 @@ export default function MoviesPage() {
         setLoading(false);
       }
     };
-      fetchMovies();
+    fetchMovies();
   }, [movieFilter]);
 
   return (

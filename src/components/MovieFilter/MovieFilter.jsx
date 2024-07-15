@@ -4,14 +4,14 @@ export default function MovieFilter({ search, onFilter }) {
   return (
     <div className={css.filterByMovie}>
       <label htmlFor="filter" className={css.label}>
-        <SiThemoviedatabase /> Search Movies <SiThemoviedatabase />
+        <SiThemoviedatabase /> Пошук фільмів <SiThemoviedatabase />
       </label>
       <input
         className={css.input}
         type="text"
         name="filter"
         value={search}
-        placeholder="Please enter search movie"
+        placeholder="Введіть назву фільму"
         onChange={(e) => onFilter(e.target.value)}
       />
     </div>

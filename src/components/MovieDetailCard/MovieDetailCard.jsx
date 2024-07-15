@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useRef, useState } from "react";
+import ReactPlayer from "react-player/youtube";
 import css from "./MovieDetailCard.module.css";
 import StarRating from "../StarRating/StarRating";
 
@@ -20,11 +21,14 @@ export default function MovieDetailCard({ movie, trailerKey }) {
     setShowTrailer(!showTrailer);
   };
 
+  const overview =
+    movie.overview || movie.overview_en || "Опис Українською мовою відсутній";
+
   return (
     <div
       className={css.backdrop}
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(51, 51, 51, 0) 70%, rgba(51, 51, 51, 1) 100%), 
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%), 
                           url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
       }}
     >
@@ -41,11 +45,11 @@ export default function MovieDetailCard({ movie, trailerKey }) {
         <div className={css.containerText}>
           <h1 className={css.title}>{movie.title}</h1>
           <h4 className={css.date}>Дата релізу: {movie.release_date}</h4>
-          <p className={css.rating}>
+          <div className={css.rating}>
             <StarRating rating={movie.vote_average} />
-          </p>
+          </div>
           <h3 className={css.overview}>Опис</h3>
-          <p className={css.overviewText}>{movie.overview}</p>
+          <p className={css.overviewText}>{overview}</p>
           <h3 className={css.genres}>Жанр</h3>
           <ul>
             {genres.map((gen) => (
@@ -61,15 +65,18 @@ export default function MovieDetailCard({ movie, trailerKey }) {
         <div className={css.containerTrailer}>
           {showTrailer && (
             <div className={css.trailerContainer}>
-              <iframe
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${trailerKey}`}
+                playing={true}
+                controls={true}
                 width="100%"
-                height="400"
-                src={`https://www.youtube.com/embed/${trailerKey}`}
-                title="Трейлер"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+                height="400px"
+                config={{
+                  youtube: {
+                    playerVars: { showinfo: 0, rel: 0, modestbranding: 1 },
+                  },
+                }}
+              />
             </div>
           )}
         </div>

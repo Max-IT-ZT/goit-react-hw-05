@@ -18,7 +18,7 @@ export const getMovies = async (query) => {
 
 export const getTrendingMovies = async () => {
   const response = await axios.get(
-    `/trending/movie/day?language=uk-UA`,
+    `/trending/movie/week?language=uk-UA`,
     options
   );
   return response.data;
