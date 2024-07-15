@@ -26,15 +26,9 @@ export default function BackgroundSlider({ movies }) {
         })
       );
       setImages(loadedImages);
-      localStorage.setItem("backgroundImages", JSON.stringify(loadedImages));
     };
 
-    const cachedImages = localStorage.getItem("backgroundImages");
-    if (cachedImages) {
-      setImages(JSON.parse(cachedImages));
-    } else {
-      preloadImages();
-    }
+    preloadImages();
   }, [movies]);
 
   useEffect(() => {
