@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import css from "./BackgroundSlider.module.css";
+import { FaStar } from "react-icons/fa";
 
 const defaultImage = "path/to/default/image.jpg";
 
@@ -8,6 +9,7 @@ export default function BackgroundSlider({ movies }) {
   const [current, setCurrent] = useState(0);
   const [images, setImages] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const preloadImages = async () => {
@@ -38,12 +40,16 @@ export default function BackgroundSlider({ movies }) {
     return () => clearInterval(interval);
   }, [images]);
 
+  const handleClick = () => {
+    navigate(`/movies/${movies[current]?.id}`, { state: location });
+  };
+
   if (images.length === 0) {
     return null;
   }
 
   return (
-    <div className={css.container}>
+    <div className={css.container} onClick={handleClick}>
       {images.map((image, index) => (
         <div
           key={index}
@@ -57,9 +63,14 @@ export default function BackgroundSlider({ movies }) {
           }}
         />
       ))}
-      <Link to={`/movies/${movies[current]?.id}`} state={location}>
-        <div className={css.movieTitle}>{movies[current]?.title}</div>
-      </Link>
+      <div className={css.movieTitle}>{movies[current]?.title}</div>
+      <div className={css.movieVote}>
+        <FaStar color="gold" />
+        {movies[current]?.vote_average.toFixed(1)}
+      </div>
+      <div className={css.movieDate}>
+        {new Date(movies[current]?.release_date).getFullYear()}
+      </div>
     </div>
   );
 }

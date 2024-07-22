@@ -1,8 +1,9 @@
-.container {
+/* HomePage.module.css */
+.containerHome {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   justify-content: center;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -20,20 +21,18 @@
 }
 
 @media (max-width: 768px) {
-  .background {
-    height: 300px;
+  .containerHome h2 {
+    margin-top: 20px;
+    font-size: 14px;
   }
 }
 
 .show {
   opacity: 1;
 }
-
-.title {
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 18px;
-  color: #fff;
-  text-shadow: 2px 2px 2px rgba(154, 130, 130, 0.563);
-  letter-spacing: 1px;
-  margin-top: 20px;
+@media (min-width: 769px) {
+  .containerHome h2 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
 }

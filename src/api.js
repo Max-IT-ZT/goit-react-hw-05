@@ -29,6 +29,28 @@ export const getMovieDetails = async (movieId) => {
   return response.data;
 };
 
+export const getTopRatedMovies = async () => {
+  const response = await axios.get(`/movie/top_rated?language=uk-UA`, options);
+  return response.data;
+};
+
+export const getTrendingCartoons = async () => {
+  const response = await axios.get(
+    `/discover/movie?with_genres=16&language=uk-UA`,
+    options
+  );
+  return response.data;
+};
+
+export const getGenres = async () => {
+  const response = await axios.get("/genre/movie/list?language=uk-UA", options);
+  return response.data;
+};
+
+export const getUpcomingMovies = async () => {
+  const response = await axios.get(`/movie/upcoming?language=uk-UA`, options);
+  return response.data;
+};
 export const getMovieCast = async (movieId) => {
   const response = await axios.get(
     `/movie/${movieId}/credits?language=uk-UA`,
