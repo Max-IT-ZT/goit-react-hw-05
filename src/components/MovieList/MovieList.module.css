@@ -26,15 +26,15 @@
 
 @media (min-width: 769px) {
   .list {
-    font-size: 18px;
-    font-weight: 800;
+    font-size: 13px;
+    font-weight: 600;
   }
 }
 
 @media (max-width: 768px) {
   .list {
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 800;
   }
 }
 
