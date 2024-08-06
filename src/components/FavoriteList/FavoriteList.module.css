@@ -30,7 +30,7 @@
 
 .movieItem {
   position: relative;
-  width: 200px;
+  width: 100px;
 }
 
 .movieImg {
@@ -41,12 +41,12 @@
 
 .removeButton {
   position: absolute;
-  top: 265px;
+  top: 125px;
   right: 5px;
   background: white;
   border: none;
   cursor: pointer;
-  padding: 7px;
+  padding: 5px;
   border-radius: 30%;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -57,4 +57,28 @@
   font-size: 18px;
   color: #666;
   text-align: center;
+}
+@media (min-width: 768px) {
+  .movieItem {
+    position: relative;
+    width: 200px;
+  }
+  .removeButton {
+    position: absolute;
+    top: 265px;
+    right: 5px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 30%;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  }
+  .icon {
+    width: 15px;
+    height: auto;
+  }
 }

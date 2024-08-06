@@ -32,7 +32,7 @@ export default function FavoriteList() {
                   className={css.removeButton}
                   onClick={() => removeFavorite(movie.id)}
                 >
-                  <FaTrashAlt color="red" />
+                  <FaTrashAlt color="red" size={10} className={css.icon} />
                 </button>
               </div>
             );
