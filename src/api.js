@@ -82,3 +82,30 @@ export const getMovieVideos = async (movieId) => {
 
   return videos;
 };
+export const getFavorites = () => {
+  try {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    return favorites;
+  } catch (error) {
+    return [];
+  }
+};
+
+export const addFavorite = (movie) => {
+  const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (!savedFavorites.some((fav) => fav.id === movie.id)) {
+    savedFavorites.push(movie);
+    localStorage.setItem("favorites", JSON.stringify(savedFavorites));
+  }
+};
+
+export const removeFavorite = (movieId) => {
+  const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  const updatedFavorites = savedFavorites.filter(
+    (movie) => movie.id !== movieId
+  );
+  localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+};

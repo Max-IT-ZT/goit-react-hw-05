@@ -39,7 +39,7 @@ export default function MoviesPage() {
       <MovieFilter search={movieFilter} onFilter={changeMovieFilter} />
       {loading && <Loader />}
       {error && <p>{error}</p>}
-      {movieFilter && <MovieList movies={movies} />}
+      {movieFilter && <MovieList movies={movies} isSwiper={false} />}
     </div>
   );
 }

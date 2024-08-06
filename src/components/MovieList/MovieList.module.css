@@ -1,4 +1,5 @@
-.container {
+/* MovieList.module.css */
+.categoryContainer {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -36,14 +37,41 @@
     font-weight: 500;
   }
 }
+
 .list {
   margin-top: 5px;
   display: flex;
   justify-content: space-around;
 }
+
 .vote {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
+}
+
+.movieList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  padding: 30px;
+}
+
+@media (max-width: 768px) {
+  .movieList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .movieList {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+
+.movieItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

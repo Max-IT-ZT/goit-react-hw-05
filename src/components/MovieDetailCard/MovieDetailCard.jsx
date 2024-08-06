@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { IoArrowBackOutline } from "react-icons/io5";
+import { IoArrowBackOutline, IoHeartOutline, IoHeart } from "react-icons/io5";
 import { useRef, useState } from "react";
 import css from "./MovieDetailCard.module.css";
 import StarRating from "../StarRating/StarRating";
+import { useFavorites } from "../../FavoriteContext";
 
 const defaultImg =
   "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
@@ -12,13 +13,23 @@ export default function MovieDetailCard({ movie, trailerKey }) {
     ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
     : defaultImg;
   const genres = movie.genres;
-  console.log("genres: ", genres);
   const location = useLocation();
   const backListRef = useRef(location.state ?? "/movies");
   const [showTrailer, setShowTrailer] = useState(false);
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
+
+  const isFavorite = favorites.some((fav) => fav.id === movie.id);
 
   const toggleTrailer = () => {
     setShowTrailer(!showTrailer);
+  };
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFavorite(movie.id);
+    } else {
+      addFavorite(movie);
+    }
   };
 
   return (
@@ -40,11 +51,21 @@ export default function MovieDetailCard({ movie, trailerKey }) {
           width={250}
         />
         <div className={css.containerText}>
-          <h1 className={css.title}>{movie.title}</h1>
+          <div className={css.favoriteContainer}>
+            <h1 className={css.title}>{movie.title}</h1>
+            <button
+              className={css.favoriteButton}
+              onClick={handleFavoriteClick}
+            >
+              {isFavorite ? <IoHeart /> : <IoHeartOutline />}
+            </button>
+          </div>
+
           <h4 className={css.date}>Дата релізу: {movie.release_date}</h4>
           <div className={css.rating}>
             <StarRating rating={movie.vote_average} />
           </div>
+
           <h3 className={css.overview}>Опис</h3>
           <p className={css.overviewText}>{movie.overview}</p>
           <h3 className={css.genres}>Жанр</h3>

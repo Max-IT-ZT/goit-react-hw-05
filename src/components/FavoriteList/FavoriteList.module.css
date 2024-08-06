@@ -1,0 +1,59 @@
+.container {
+  padding: 20px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; */
+  background: rgb(0, 110, 112);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 110, 112, 1) 0%,
+    rgba(0, 0, 0, 1) 90%
+  );
+  height: 100vh;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.movieItem {
+  position: relative;
+  width: 200px;
+}
+
+.movieImg {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.removeButton {
+  position: absolute;
+  top: 265px;
+  right: 5px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 30%;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.emptyMessage {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
